@@ -41,14 +41,21 @@ bool Less(T left, T right)
 {
 	return left < right;
 }
-//特化
+//特化   
 template<>
 bool Less<double*>(double* left,double* right)
+{
+	return *left < *right;
+}
+template<>
+bool Less<string*>(string* left, string* right)
 {
 	return *left < *right;
 }
 int main()
 {
 	cout << Less(3, 5) << endl;
+	cout << Less(3.3, 2.2) << endl;
+	cout << Less('ABC', 'AB') << endl;
 	return 0;
 }
