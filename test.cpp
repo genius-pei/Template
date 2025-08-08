@@ -37,18 +37,18 @@ using namespace std;
 //	return 0; 
 //}
 template<class T>
-bool Less(T left, T right)
+bool Less(const T& left, const T& right)//使用&避免传值传参，同时const修饰避免使用引用将原值修改
 {
 	return left < right;
 }
 //特化   
 template<>
-bool Less<double*>(double* left,double* right)
+bool Less<double*>(double* const & left,double* const & right)//const 在*左边修饰指针指向对象，在*  w右边修饰指针本身
 {
-	return *left < *right;
+	return *left < *right;	
 }
 template<>
-bool Less<string*>(string* left, string* right)
+bool Less<string*>(string* const & left, string* const & right)
 {
 	return *left < *right;
 }
