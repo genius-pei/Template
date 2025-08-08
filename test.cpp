@@ -52,10 +52,76 @@ bool Less<string*>(string* const & left, string* const & right)
 {
 	return *left < *right;
 }
+
+
+template<class T1,class T2>
+class Date
+{
+public:
+	Date()
+	{
+		cout << "Date(T1,T2)" << endl;
+	}
+private:
+	T1 d1;
+	T2 d2;
+
+};
+//全特化
+template<>
+class Date<int,char>
+{
+public:
+	Date()
+	{
+		cout << "Date(int,char)" << endl;
+	}
+};
+//偏特化
+//特化部分参数
+template<class T1>
+class Date<T1,char>
+{
+public:
+	Date()
+	{
+		cout << "Date(T1,char)" << endl;
+	}
+};
+//偏特化
+//对参数进一步限制
+template<class T1,class T2>
+class Date<T1*, T2*>
+{
+public:
+	Date()
+	{
+		cout << "Date(T1*,T2*)" << endl;
+	}
+};
+
+template<class T1, class T2>
+class Date<T1&, T2&>
+{
+public:
+	Date()
+	{
+		cout << "Date(T1&,T2&)" << endl;
+	}
+};
+
+
 int main()
 {
-	cout << Less(3, 5) << endl;
+	/*cout << Less(3, 5) << endl;
 	cout << Less(3.3, 2.2) << endl;
-	cout << Less('ABC', 'AB') << endl;
+	cout << Less('ABC', 'AB') << endl;*/
+	Date<int, int> d1;
+	Date<int, char> d2;
+	Date<char, char> d3;
+	Date<int*, char*> d4;
+	Date<int&, char&> d5;
+		
+	
 	return 0;
 }
